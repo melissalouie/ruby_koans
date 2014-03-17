@@ -14,7 +14,15 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
-  # WRITE THIS CODE
+  raise TriangleError if [a, b, c].min <= 0
+  smallest, small, greatest = [a, b, c].sort
+  raise TriangleError if smallest + small <= greatest
+
+  case [a, b, c].uniq.size
+  when 1 then :equilateral
+  when 2 then :isosceles
+  else :scalene
+  end
 end
 
 # Error class used in part 2.  No need to change this code.
